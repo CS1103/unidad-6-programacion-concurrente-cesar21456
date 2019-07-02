@@ -133,9 +133,10 @@ int main() {
     auto t2=clock();
 
     thread a1(calcular,ref(f),ref(a),ref(b),0);
-
+    thread a2(calcular,ref(f),ref(a),ref(b),1);//solo son 2 threads en este caso porque fue la ultima prueba que hicimos
 
     a1.join();
+    a2.join();
     cout<<"hola"<<endl;
 
     auto t3=clock();
