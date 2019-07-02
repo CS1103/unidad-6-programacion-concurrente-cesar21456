@@ -8,7 +8,7 @@
 #include<time.h>
 #include<thread>
 #include <ctime>
-#define NUM_HILOS 2
+#define NUM_HILOS 4
 using namespace std;
 
 template <typename A>
@@ -133,12 +133,14 @@ int main() {
     auto t2=clock();
 
     thread a1(calcular,ref(f),ref(a),ref(b),0);
-    thread a2(calcular,ref(f),ref(a),ref(b),1);//solo son 2 threads en este caso porque fue la ultima prueba que hicimos
+    thread a2(calcular,ref(f),ref(a),ref(b),1);
+    thread a3(calcular,ref(f),ref(a),ref(b),2);
+    thread a4(calcular,ref(f),ref(a),ref(b),3);//solo son 4 threads en este caso porque fue la ultima prueba que hicimos
 
     a1.join();
     a2.join();
     cout<<"hola"<<endl;
-
+    f.imprimir_matriz();
     auto t3=clock();
     double time2 = (double(t3-t2)/CLOCKS_PER_SEC);
     cout << "Execution Time: " << time << endl;
